@@ -9,11 +9,11 @@ module.exports = function makeExchange(currency) {
     }
     */
     const calc = (currency) => {
-    if (currency > 1000) {
+    if (currency > 10000) {
         result.error = "You are rich, my friend! We don't have so much coins for exchange"
         return result;
     }
-    else if (currency >= 50 && currency <= 1000) {
+    else if (currency >= 50 && currency <= 10000) {
         result.H = (currency - (currency % 50)) / 50;
         return calc(currency % 50);
     }
@@ -34,6 +34,7 @@ module.exports = function makeExchange(currency) {
         result.P = (currency - (currency % 1)) / 1;
         return calc(currency % 1);
     }
+    console.log(result);
     return result;
     }
     return calc(currency);
